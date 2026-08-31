@@ -13,6 +13,8 @@ services:
     env_file: .env
     volumes:
       - static_volume:/backend_static
+    depends_on:
+      - db
   frontend:
     image: olchikmor/taski_frontend  # Качаем с Docker Hub
     env_file: .env
@@ -24,5 +26,7 @@ services:
     env_file: .env
     volumes:
       - static_volume:/staticfiles/
+    depends_on:
+      - backend
     ports:
       - 8000:80
